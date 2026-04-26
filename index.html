@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trend Pulse India — AI Trend Intelligence for Indian Creators</title>
+<meta name="description" content="Spot trends 7–30 days before they go viral. AI-powered trend intelligence for Indian creators and brands across YouTube, Instagram, and Google Trends." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='52'%3E%F0%9F%93%88%3C/text%3E%3C/svg%3E" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0b0b10',
+          panel: '#13131c',
+          line: '#23232f',
+          saffron: '#ff9933',
+          india: '#138808',
+          accent: '#7c5cff',
+          neon: '#00e5a8',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"','ui-sans-serif','system-ui'],
+          body: ['Inter','ui-sans-serif','system-ui'],
+        }
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  html,body{background:#0b0b10;color:#e7e7ee;font-family:Inter,ui-sans-serif,system-ui}
+  .font-display{font-family:'Space Grotesk',ui-sans-serif,system-ui}
+  .grad-text{background:linear-gradient(90deg,#ff9933 0%,#ffd166 35%,#00e5a8 70%,#7c5cff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .grad-bg{background:radial-gradient(1200px 600px at 10% -10%,rgba(255,153,51,.18),transparent 60%),radial-gradient(900px 500px at 90% 0%,rgba(124,92,255,.18),transparent 60%),radial-gradient(700px 500px at 50% 100%,rgba(0,229,168,.12),transparent 60%)}
+  .glass{background:rgba(19,19,28,.6);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.06)}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));border:1px solid #23232f;border-radius:16px}
+  .chip{font-size:11px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;border:1px solid #2a2a39;background:#15151f;color:#cfcfdc;text-transform:uppercase}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;font-weight:600;font-size:14px;transition:all .15s ease}
+  .btn-primary{background:linear-gradient(90deg,#ff9933,#ffb86b);color:#1a0e00}
+  .btn-primary:hover{filter:brightness(1.05);transform:translateY(-1px)}
+  .btn-ghost{border:1px solid #2a2a39;color:#e7e7ee;background:#13131c}
+  .btn-ghost:hover{border-color:#3a3a4d}
+  .btn-neon{background:linear-gradient(90deg,#00e5a8,#7c5cff);color:#06120c}
+  .progress{height:6px;border-radius:999px;background:#1c1c28;overflow:hidden}
+  .progress > span{display:block;height:100%;background:linear-gradient(90deg,#ff9933,#00e5a8)}
+  .dot{width:8px;height:8px;border-radius:999px;display:inline-block}
+  details > summary{list-style:none;cursor:pointer}
+  details > summary::-webkit-details-marker{display:none}
+  .skel{background:linear-gradient(90deg,#15151f 0%,#1c1c28 50%,#15151f 100%);background-size:200% 100%;animation:shimmer 1.4s infinite}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  .ticker{display:flex;gap:36px;animation:scroll 30s linear infinite;white-space:nowrap}
+  @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .hide{display:none !important}
+  input,select,textarea{color-scheme:dark}
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- ============== TOP NAV ============== -->
+<header class="sticky top-0 z-40 glass">
+  <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2 font-display text-lg">
+      <span class="text-2xl">📈</span>
+      <span class="grad-text font-bold">Trend Pulse India</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm text-neutral-300">
+      <a href="#features" class="hover:text-white">Features</a>
+      <a href="#how" class="hover:text-white">How it works</a>
+      <a href="#pricing" class="hover:text-white">Pricing</a>
+      <a href="#faq" class="hover:text-white">FAQ</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button id="navLogin" class="btn btn-ghost">Log in</button>
+      <button id="navSignup" class="btn btn-primary">Get started</button>
+      <button id="navDashboard" class="btn btn-neon hide">Open Dashboard</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============== LANDING ============== -->
+<main id="landing">
+
+  <!-- HERO -->
+  <section class="grad-bg">
+    <div class="max-w-7xl mx-auto px-5 pt-20 pb-16 text-center">
+      <div class="inline-flex items-center gap-2 chip mb-6">
+        <span class="dot" style="background:#00e5a8"></span> Live across YouTube · Instagram · Google Trends
+      </div>
+      <h1 class="font-display font-bold text-4xl md:text-6xl leading-tight max-w-4xl mx-auto">
+        Spot Indian trends <span class="grad-text">7–30 days</span> before they go viral.
+      </h1>
+      <p class="mt-5 text-neutral-300 max-w-2xl mx-auto text-lg">
+        Trend Pulse India fuses a deterministic trend-detection engine with Claude/GPT pattern mining to surface early signals, kill saturated topics, and ship you ready-to-film content ideas every day.
+      </p>
+      <div class="mt-8 flex items-center justify-center gap-3 flex-wrap">
+        <button class="btn btn-primary heroCta">Start free 7-day trial</button>
+        <a href="#how" class="btn btn-ghost">See how it works</a>
+      </div>
+      <div class="mt-6 text-xs text-neutral-500">No credit card to start · Cancel anytime · Made for Indian creators &amp; brands</div>
+    </div>
+
+    <!-- LIVE TICKER -->
+    <div class="border-y border-line bg-panel/40 overflow-hidden">
+      <div class="ticker py-3 text-sm text-neutral-300">
+        <span>🔥 IPL Mid-Season Meme Edits — TVS 87</span>
+        <span>⚡ AI Resume Roast (Hindi POV) — z=2.7 BREAKOUT</span>
+        <span>🌧️ Bengaluru Rain Comedy — creators 1→9 in 5d</span>
+        <span>📉 "Mr Beast in India" reactions — saturating</span>
+        <span>🎬 Gen-Z vs Boomer Hindi — TVS 81</span>
+        <span>🥘 Street-food Hidden Gems — early</span>
+        <span>🔥 IPL Mid-Season Meme Edits — TVS 87</span>
+        <span>⚡ AI Resume Roast (Hindi POV) — z=2.7 BREAKOUT</span>
+        <span>🌧️ Bengaluru Rain Comedy — creators 1→9 in 5d</span>
+        <span>📉 "Mr Beast in India" reactions — saturating</span>
+        <span>🎬 Gen-Z vs Boomer Hindi — TVS 81</span>
+        <span>🥘 Street-food Hidden Gems — early</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="max-w-7xl mx-auto px-5 py-14 grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="card p-5"><div class="text-3xl font-display font-bold grad-text">3</div><div class="text-sm text-neutral-400 mt-1">platforms unified</div></div>
+    <div class="card p-5"><div class="text-3xl font-display font-bold grad-text">~50k</div><div class="text-sm text-neutral-400 mt-1">items scored daily</div></div>
+    <div class="card p-5"><div class="text-3xl font-display font-bold grad-text">7–30d</div><div class="text-sm text-neutral-400 mt-1">forecast window</div></div>
+    <div class="card p-5"><div class="text-3xl font-display font-bold grad-text">&lt;2 min</div><div class="text-sm text-neutral-400 mt-1">to a fresh idea</div></div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="max-w-7xl mx-auto px-5 py-10">
+    <div class="text-center mb-10">
+      <div class="chip mx-auto inline-block">FEATURES</div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mt-3">Built for the Indian creator economy</h2>
+      <p class="text-neutral-400 mt-2">Everything you need to never run out of high-probability ideas.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card p-6"><div class="text-2xl mb-2">🛰️</div><div class="font-display font-semibold">Multi-platform ingestion</div><p class="text-neutral-400 text-sm mt-1">YouTube Data API, pytrends, and Apify Reels — normalized into one time-series store.</p></div>
+      <div class="card p-6"><div class="text-2xl mb-2">⚡</div><div class="font-display font-semibold">Trend Velocity Score</div><p class="text-neutral-400 text-sm mt-1">A composite of velocity, acceleration, and engagement, normalized per-category.</p></div>
+      <div class="card p-6"><div class="text-2xl mb-2">🌱</div><div class="font-display font-semibold">Early-signal detector</div><p class="text-neutral-400 text-sm mt-1">Z-score, creator-diversity growth, and Google Breakout firing before saturation.</p></div>
+      <div class="card p-6"><div class="text-2xl mb-2">🧠</div><div class="font-display font-semibold">LLM pattern miner</div><p class="text-neutral-400 text-sm mt-1">Claude clusters topics, extracts hooks/formats, then writes filmable scripts.</p></div>
+      <div class="card p-6"><div class="text-2xl mb-2">📉</div><div class="font-display font-semibold">Saturation guardrail</div><p class="text-neutral-400 text-sm mt-1">Auto-flags decaying topics so you don't burn budget on dying memes.</p></div>
+      <div class="card p-6"><div class="text-2xl mb-2">📨</div><div class="font-display font-semibold">Weekly intel report</div><p class="text-neutral-400 text-sm mt-1">PDF + dashboard + WhatsApp digest. Top trends, early signals, ready scripts.</p></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="max-w-7xl mx-auto px-5 py-14">
+    <div class="text-center mb-10">
+      <div class="chip mx-auto inline-block">PIPELINE</div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mt-3">From raw signal to filmable script</h2>
+    </div>
+    <div class="grid md:grid-cols-5 gap-4">
+      <div class="card p-5"><div class="text-xs text-neutral-500">01</div><div class="font-display font-semibold mt-1">Collect</div><p class="text-neutral-400 text-sm mt-1">YouTube + IG + Google Trends every hour.</p></div>
+      <div class="card p-5"><div class="text-xs text-neutral-500">02</div><div class="font-display font-semibold mt-1">Score</div><p class="text-neutral-400 text-sm mt-1">Velocity · Engagement · TVS · Z-score.</p></div>
+      <div class="card p-5"><div class="text-xs text-neutral-500">03</div><div class="font-display font-semibold mt-1">Detect</div><p class="text-neutral-400 text-sm mt-1">Early signals + saturation flags.</p></div>
+      <div class="card p-5"><div class="text-xs text-neutral-500">04</div><div class="font-display font-semibold mt-1">Cluster (LLM)</div><p class="text-neutral-400 text-sm mt-1">Themes · hooks · format signatures.</p></div>
+      <div class="card p-5"><div class="text-xs text-neutral-500">05</div><div class="font-display font-semibold mt-1">Generate</div><p class="text-neutral-400 text-sm mt-1">5 fresh ideas with hooks &amp; scripts.</p></div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="max-w-7xl mx-auto px-5 py-14">
+    <div class="text-center mb-10">
+      <div class="chip mx-auto inline-block">PRICING</div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mt-3">Pay for what you ship</h2>
+      <p class="text-neutral-400 mt-2">Cancel anytime. INR billed via Stripe. GST invoice included.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card p-6">
+        <div class="font-display font-semibold">Starter</div>
+        <div class="text-3xl font-bold mt-2">₹499<span class="text-neutral-400 text-base">/mo</span></div>
+        <ul class="text-sm text-neutral-300 mt-4 space-y-2">
+          <li>✅ Weekly report (PDF + dashboard)</li>
+          <li>✅ Top 5 trends + saturation list</li>
+          <li>✅ 1 niche</li>
+          <li>❌ Daily early signals</li>
+          <li>❌ Idea generator</li>
+        </ul>
+        <button class="btn btn-ghost w-full justify-center mt-5 plan" data-plan="starter">Start free trial</button>
+      </div>
+      <div class="card p-6 ring-2 ring-saffron/60">
+        <div class="flex items-center justify-between"><div class="font-display font-semibold">Pro</div><span class="chip" style="border-color:#ff9933;color:#ffd1a0">Most popular</span></div>
+        <div class="text-3xl font-bold mt-2">₹2,499<span class="text-neutral-400 text-base">/mo</span></div>
+        <ul class="text-sm text-neutral-300 mt-4 space-y-2">
+          <li>✅ Everything in Starter</li>
+          <li>✅ Daily early signals</li>
+          <li>✅ 30 idea generations / mo</li>
+          <li>✅ 3 niches + competitor watch (5 handles)</li>
+          <li>✅ WhatsApp digest</li>
+        </ul>
+        <button class="btn btn-primary w-full justify-center mt-5 plan" data-plan="pro">Start 7-day trial</button>
+      </div>
+      <div class="card p-6">
+        <div class="font-display font-semibold">Studio</div>
+        <div class="text-3xl font-bold mt-2">₹9,999<span class="text-neutral-400 text-base">/mo</span></div>
+        <ul class="text-sm text-neutral-300 mt-4 space-y-2">
+          <li>✅ Everything in Pro</li>
+          <li>✅ Unlimited ideas + API access</li>
+          <li>✅ White-glove report (your category)</li>
+          <li>✅ 25 competitor handles</li>
+          <li>✅ Priority support</li>
+        </ul>
+        <button class="btn btn-ghost w-full justify-center mt-5 plan" data-plan="studio">Talk to founder</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="max-w-7xl mx-auto px-5 py-10">
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card p-6"><p class="text-neutral-300">"Caught the AI Resume Roast wave 5 days early. Hit 1.2M views with the exact hook the dashboard suggested."</p><div class="text-sm text-neutral-500 mt-3">— @cricketcomedy_, 320k followers</div></div>
+      <div class="card p-6"><p class="text-neutral-300">"Saved us ~2 hours per brief. Our brand team uses the Saturation list to kill bad ideas before the deck even starts."</p><div class="text-sm text-neutral-500 mt-3">— Performance lead, D2C beauty agency</div></div>
+      <div class="card p-6"><p class="text-neutral-300">"WhatsApp digest at 7am is unreal. /early fashion → 3 niche signals before chai."</p><div class="text-sm text-neutral-500 mt-3">— Mumbai-based reels creator</div></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="max-w-4xl mx-auto px-5 py-14">
+    <div class="text-center mb-8">
+      <div class="chip mx-auto inline-block">FAQ</div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mt-3">Common questions</h2>
+    </div>
+    <div class="space-y-3">
+      <details class="card p-5"><summary class="flex justify-between items-center"><span class="font-display font-semibold">How is this different from "trending now" lists?</span><span>+</span></summary><p class="text-neutral-400 mt-3 text-sm">Trending lists show what's already viral. Trend Pulse fires on early-stage signals — z-score &gt; 2 on category baseline, creator-diversity doubling, and Google Breakout — typically 7–30 days before saturation.</p></details>
+      <details class="card p-5"><summary class="flex justify-between items-center"><span class="font-display font-semibold">Does it work for non-English creators?</span><span>+</span></summary><p class="text-neutral-400 mt-3 text-sm">Yes — Hindi-English mix is the default. Clustering and hook extraction handle Hinglish, Tamil, Telugu, Bangla, Marathi captions.</p></details>
+      <details class="card p-5"><summary class="flex justify-between items-center"><span class="font-display font-semibold">Can I cancel anytime?</span><span>+</span></summary><p class="text-neutral-400 mt-3 text-sm">Yes. Stripe handles cancellation; access continues until end of paid period.</p></details>
+      <details class="card p-5"><summary class="flex justify-between items-center"><span class="font-display font-semibold">Is the data private?</span><span>+</span></summary><p class="text-neutral-400 mt-3 text-sm">Public-platform data only. Your account, watchlists, and generations are private.</p></details>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-7xl mx-auto px-5 py-14">
+    <div class="card p-10 text-center">
+      <h3 class="font-display text-2xl md:text-3xl font-bold">Ship the trend, not the regret.</h3>
+      <p class="text-neutral-400 mt-2">Start your 7-day Pro trial. No card needed.</p>
+      <button class="btn btn-primary mt-6 heroCta">Get started — it's free</button>
+    </div>
+  </section>
+
+  <footer class="border-t border-line mt-10">
+    <div class="max-w-7xl mx-auto px-5 py-8 flex flex-col md:flex-row items-center justify-between text-sm text-neutral-500">
+      <div>© <span id="yr"></span> Trend Pulse India · Built for Indian creators</div>
+      <div class="flex gap-4 mt-3 md:mt-0">
+        <a href="#" class="hover:text-white">Privacy</a>
+        <a href="#" class="hover:text-white">Terms</a>
+        <a href="mailto:hello@trendpulse.in" class="hover:text-white">hello@trendpulse.in</a>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- ============== DASHBOARD (hidden until login) ============== -->
+<main id="dashboard" class="hide">
+  <div class="max-w-7xl mx-auto px-5 py-8">
+    <div class="flex items-center justify-between flex-wrap gap-3">
+      <div>
+        <div class="text-xs text-neutral-500">Welcome back</div>
+        <h1 class="font-display text-2xl md:text-3xl font-bold" id="hello">Hi 👋</h1>
+        <div class="text-sm text-neutral-400 mt-1" id="planLine"></div>
+      </div>
+      <div class="flex items-center gap-2">
+        <select id="niche" class="bg-panel border border-line rounded-xl px-3 py-2 text-sm">
+          <option>All niches</option>
+          <option>Comedy &amp; POV</option>
+          <option>Cricket / IPL</option>
+          <option>Food</option>
+          <option>Fashion</option>
+          <option>Tech / AI</option>
+          <option>Finance</option>
+        </select>
+        <button id="refreshBtn" class="btn btn-primary">
+          <span id="refreshLabel">⟳ Refresh Trends</span>
+        </button>
+        <button id="logoutBtn" class="btn btn-ghost">Log out</button>
+      </div>
+    </div>
+
+    <!-- Loading bar -->
+    <div id="agentBar" class="hide mt-5 card p-4">
+      <div class="flex items-center justify-between text-sm"><span id="agentStage">Calling /run-agent…</span><span id="agentPct">0%</span></div>
+      <div class="progress mt-2"><span id="agentProg" style="width:0%"></span></div>
+      <div class="text-xs text-neutral-500 mt-2">Pipeline: collect → score → detect → cluster → generate</div>
+    </div>
+
+    <!-- Quick stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+      <div class="card p-4"><div class="text-xs text-neutral-500">Items scored (24h)</div><div class="text-2xl font-display font-bold mt-1" id="kpiItems">—</div></div>
+      <div class="card p-4"><div class="text-xs text-neutral-500">Active topics</div><div class="text-2xl font-display font-bold mt-1" id="kpiTopics">—</div></div>
+      <div class="card p-4"><div class="text-xs text-neutral-500">Early signals</div><div class="text-2xl font-display font-bold mt-1 text-neon" id="kpiEarly">—</div></div>
+      <div class="card p-4"><div class="text-xs text-neutral-500">Saturating</div><div class="text-2xl font-display font-bold mt-1 text-saffron" id="kpiSat">—</div></div>
+    </div>
+
+    <!-- TOP TRENDS -->
+    <section class="mt-8">
+      <div class="flex items-center justify-between">
+        <h2 class="font-display text-xl font-bold">🔥 Top Trends</h2>
+        <span class="text-xs text-neutral-500" id="updatedAt"></span>
+      </div>
+      <div id="trendsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3"></div>
+    </section>
+
+    <!-- EARLY SIGNALS -->
+    <section class="mt-10">
+      <h2 class="font-display text-xl font-bold">🌱 Early Signals — act in next 48h</h2>
+      <div id="earlyList" class="grid md:grid-cols-2 gap-4 mt-3"></div>
+    </section>
+
+    <!-- SATURATING -->
+    <section class="mt-10">
+      <h2 class="font-display text-xl font-bold">📉 Saturated — avoid</h2>
+      <div id="satList" class="flex flex-wrap gap-2 mt-3"></div>
+    </section>
+
+    <!-- IDEAS -->
+    <section class="mt-10 mb-16">
+      <div class="flex items-center justify-between">
+        <h2 class="font-display text-xl font-bold">🎬 Content Ideas</h2>
+        <span class="text-xs text-neutral-500">Hooks · 30s scripts · format signature</span>
+      </div>
+      <div id="ideasList" class="grid md:grid-cols-2 gap-4 mt-3"></div>
+    </section>
+  </div>
+</main>
+
+<!-- ============== AUTH MODAL ============== -->
+<div id="authModal" class="hide fixed inset-0 z-50 bg-black/70 backdrop-blur flex items-center justify-center p-4">
+  <div class="card w-full max-w-md p-6 relative">
+    <button id="authClose" class="absolute top-3 right-3 text-neutral-500 hover:text-white">✕</button>
+    <div class="text-center">
+      <div class="text-3xl">📈</div>
+      <h3 class="font-display text-xl font-bold mt-2"><span id="authTitle">Sign in</span> to Trend Pulse</h3>
+      <p class="text-sm text-neutral-400 mt-1">Continue to your dashboard</p>
+    </div>
+    <form id="authForm" class="mt-5 space-y-3">
+      <div>
+        <label class="text-xs text-neutral-400">Name <span id="nameOpt" class="hide">(optional)</span></label>
+        <input id="authName" type="text" placeholder="Your name" class="w-full mt-1 bg-panel border border-line rounded-xl px-3 py-2 text-sm" />
+      </div>
+      <div>
+        <label class="text-xs text-neutral-400">Email</label>
+        <input id="authEmail" type="email" required placeholder="you@example.com" class="w-full mt-1 bg-panel border border-line rounded-xl px-3 py-2 text-sm" />
+      </div>
+      <div>
+        <label class="text-xs text-neutral-400">Password</label>
+        <input id="authPass" type="password" required minlength="6" placeholder="••••••••" class="w-full mt-1 bg-panel border border-line rounded-xl px-3 py-2 text-sm" />
+      </div>
+      <button class="btn btn-primary w-full justify-center" type="submit"><span id="authSubmitText">Sign in</span></button>
+      <p class="text-xs text-neutral-500 text-center">By continuing you agree to our Terms &amp; Privacy.</p>
+      <p class="text-sm text-neutral-400 text-center">
+        <span id="switchText">No account?</span>
+        <button type="button" id="authSwitch" class="text-saffron hover:underline">Sign up</button>
+      </p>
+    </form>
+  </div>
+</div>
+
+<!-- ============== CHECKOUT MODAL ============== -->
+<div id="payModal" class="hide fixed inset-0 z-50 bg-black/70 backdrop-blur flex items-center justify-center p-4">
+  <div class="card w-full max-w-md p-6 relative">
+    <button id="payClose" class="absolute top-3 right-3 text-neutral-500 hover:text-white">✕</button>
+    <div class="text-center">
+      <div class="text-3xl">💳</div>
+      <h3 class="font-display text-xl font-bold mt-2">Confirm subscription</h3>
+      <p class="text-sm text-neutral-400 mt-1">Powered by Stripe (test mode)</p>
+    </div>
+    <div class="mt-5 card p-4">
+      <div class="flex items-center justify-between"><span class="text-neutral-400 text-sm">Plan</span><span id="payPlan" class="font-semibold">Pro</span></div>
+      <div class="flex items-center justify-between mt-2"><span class="text-neutral-400 text-sm">Billed monthly</span><span id="payAmt" class="font-semibold">₹2,499</span></div>
+      <div class="flex items-center justify-between mt-2"><span class="text-neutral-400 text-sm">Trial</span><span class="font-semibold">7 days free</span></div>
+    </div>
+    <button id="payConfirm" class="btn btn-primary w-full justify-center mt-5">Start trial &amp; activate</button>
+    <p class="text-xs text-neutral-500 text-center mt-3">In production this opens Stripe Checkout. After webhook fires, your account is marked active.</p>
+  </div>
+</div>
+
+<!-- ============== TOAST ============== -->
+<div id="toast" class="hide fixed bottom-6 right-6 z-50 card p-4 max-w-sm">
+  <div id="toastMsg" class="text-sm">Done.</div>
+</div>
+
+<!-- ============== APP LOGIC ============== -->
+<script>
+/* -----------------------------------------------------------
+ * CONFIG — point this at your backend when deployed.
+ * If API_BASE is empty or unreachable, the app falls back to
+ * realistic mock data so the site is live-demo-ready on Day 1.
+ * -----------------------------------------------------------*/
+const API_BASE = ""; // e.g. "https://your-backend.up.railway.app"
+const STRIPE_PUBLIC_KEY = "pk_test_replace_me";
+const PLANS = {
+  starter: { name: "Starter", price: "₹499" },
+  pro:     { name: "Pro",     price: "₹2,499" },
+  studio:  { name: "Studio",  price: "₹9,999" },
+};
+
+/* -----------------------------------------------------------
+ * Tiny store (uses localStorage if available; falls back to memory)
+ * -----------------------------------------------------------*/
+const mem = {};
+const store = {
+  get(k){ try { return localStorage.getItem(k) ?? mem[k] ?? null; } catch { return mem[k] ?? null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch { mem[k]=v; } },
+  del(k){ try { localStorage.removeItem(k); } catch { delete mem[k]; } },
+};
+
+/* -----------------------------------------------------------
+ * Helpers
+ * -----------------------------------------------------------*/
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+function show(el){ el.classList.remove("hide"); }
+function hide(el){ el.classList.add("hide"); }
+function toast(msg){ const t=$("#toast"); $("#toastMsg").textContent=msg; show(t); setTimeout(()=>hide(t),2600); }
+function fmt(n){ return n>=1e6?(n/1e6).toFixed(1)+"M":n>=1e3?(n/1e3).toFixed(1)+"k":String(n); }
+
+/* -----------------------------------------------------------
+ * Mock data (used when no backend) — mirrors your real API shapes
+ * -----------------------------------------------------------*/
+const MOCK = {
+  kpi: { items: 47210, topics: 38, early: 9, saturating: 6 },
+  trends: [
+    { name:"IPL Mid-Season Meme Edits", tvs:87, platforms:["YouTube","Instagram"], creators:["@cricketcomedy_","@ipl_mood","@yorker_tales"], why:"4 fixtures this week, fan rivalry peaking", views:12_400_000 },
+    { name:"Gen-Z vs Boomer Hindi POVs", tvs:81, platforms:["Instagram","Shorts"], creators:["@desi_genz","@hindi_pov","@yaarbro"], why:"Velocity 3x last week's category mean", views:8_900_000 },
+    { name:"Street-food Hidden Gems · Tier-2 cities", tvs:74, platforms:["YouTube"], creators:["@indorefoodies","@nagpurfeasts","@kanpurkhana"], why:"New creator entrants up 2.1x WoW", views:5_300_000 },
+    { name:"Wedding Dance Reels (Sangeet ed.)", tvs:69, platforms:["Instagram"], creators:["@dancewala","@sangeetstars","@reelishai"], why:"Wedding-season uplift; audio reuses spiking", views:6_100_000 },
+    { name:"Hostel Life Comedy", tvs:64, platforms:["YouTube","Instagram"], creators:["@thehostelguy","@daru_comedy","@4amfriends"], why:"College reopening + exam-stress humor", views:4_200_000 },
+  ],
+  early: [
+    { name:'AI Resume Roast — Hindi POV', z:2.7, breakout:true, creator_growth:2.4, views:412_000, prob:0.82 },
+    { name:'Bengaluru Rain Comedy', z:2.3, breakout:false, creator_growth:9.0, views:380_000, prob:0.71 },
+    { name:'"Mummy ke saath ChatGPT"', z:2.1, breakout:true, creator_growth:1.9, views:260_000, prob:0.74 },
+    { name:'Tier-2 Wedding Roast', z:2.0, breakout:false, creator_growth:2.0, views:540_000, prob:0.66 },
+    { name:'Hindi Stocks-Explained Skits', z:1.9, breakout:false, creator_growth:1.8, views:610_000, prob:0.61 },
+  ],
+  saturating: [
+    "Mr Beast in India reactions",
+    "Generic DIML Bangalore SDE",
+    "Generic 'POV: you're a millennial'",
+    "Old Bollywood lipsync reels",
+    "Cliché 'dadi reacts' format",
+    "Overused IPL anchor edits"
+  ],
+  ideas: [
+    {
+      title:"AI Resume Roast — Mummy Edition",
+      hook:"Maine apna resume ChatGPT ko diya — usne mummy ko reply kiya.",
+      script:"0–3s hook → 3–10s screen-record of AI critique → 10–25s mom reads + reactions → 25–40s twist: AI compliments her cooking instead → 40–55s CTA.",
+      format:"Vertical 50s · Hindi-English mix · jump cuts every 1.5s · sticker overlays",
+      hashtags:["#ai","#reels","#desi","#funny","#genz","#indianmom"],
+      why:'Combines "AI Resume Roast" early breakout with the durable "Indian Mom" template (12-month evergreen).'
+    },
+    {
+      title:"Bengaluru Rain — Cab Driver Plot Twist",
+      hook:"Bengaluru rain mein Uber ka surge: 4.7x. Driver bola — saheb, paidal chaliye.",
+      script:"0–3s shocking surge screenshot → 3–12s POV walk in rain → 12–30s driver banter (subtitled) → 30–45s reveal: driver's startup pitch → 45–55s CTA.",
+      format:"Vertical 55s · phone-only · ambient rain SFX · Kannada-Hindi-English",
+      hashtags:["#bengaluru","#rain","#namma","#reels","#startupindia"],
+      why:"Rides Bengaluru-rain early signal; auto-relatable for tier-1 audiences."
+    },
+    {
+      title:'"Gen-Z vs Boomer" — UPI Edition',
+      hook:"Boomer: cash. Gen-Z: scan kar le. Boomer: scan kya hota hai?",
+      script:"0–3s split-screen hook → 3–20s 4 mini-skits at kirana, auto, mandir, chai → 20–40s twist: boomer becomes UPI champion → 40–55s CTA.",
+      format:"Vertical 55s · split-screen · meme captions · trending audio",
+      hashtags:["#upi","#genz","#boomer","#hindi","#reels"],
+      why:"Gen-Z vs Boomer is at TVS 81; UPI angle is fresh in dataset."
+    },
+    {
+      title:"Tier-2 Wedding Roast — Aunty Edition",
+      hook:"Aunty bolti hai 'shaadi mein chalo' — main bola 'Wi-Fi password de pehle'.",
+      script:"0–3s hook → 3–15s aunty interview clips → 15–35s POV chaos at sangeet → 35–55s redemption arc + CTA.",
+      format:"Vertical 55s · interview cutaways · loud captions · wedding-shehnai SFX",
+      hashtags:["#shaadi","#desiwedding","#reels","#aunty","#funny"],
+      why:"Wedding-season uplift + early Tier-2 wedding roast signal."
+    },
+  ],
+};
+
+/* -----------------------------------------------------------
+ * API client with graceful fallback to MOCK
+ * -----------------------------------------------------------*/
+async function api(path, opts={}){
+  if(!API_BASE) throw new Error("no_backend");
+  const token = store.get("tp_token");
+  const res = await fetch(API_BASE + path, {
+    ...opts,
+    headers: { "Content-Type":"application/json", ...(token?{Authorization:"Bearer "+token}:{}), ...(opts.headers||{}) },
+  });
+  if(!res.ok) throw new Error("api_"+res.status);
+  return res.json();
+}
+
+async function fetchAll(){
+  try {
+    const [t, e, i] = await Promise.all([api("/trends"), api("/early-signals"), api("/ideas")]);
+    return { trends:t.trends||t, early:e.signals||e, ideas:i.ideas||i, saturating:t.saturating||MOCK.saturating, kpi:t.kpi||MOCK.kpi };
+  } catch {
+    return { trends:MOCK.trends, early:MOCK.early, ideas:MOCK.ideas, saturating:MOCK.saturating, kpi:MOCK.kpi };
+  }
+}
+
+async function runAgent(){
+  // Drive a fake progress bar even when backend exists, so UX feels live.
+  const stages = [
+    [12,"📡 Collecting from YouTube · IG · Google Trends…"],
+    [28,"📊 Computing velocity · engagement · TVS…"],
+    [44,"🧪 Z-score on category baselines…"],
+    [60,"🌱 Detecting early signals · saturation flags…"],
+    [78,"🧠 Clustering with Claude (Haiku)…"],
+    [92,"✍️ Generating ideas with Claude (Sonnet)…"],
+    [100,"✅ Done"],
+  ];
+  show($("#agentBar"));
+  for(const [pct,msg] of stages){
+    $("#agentProg").style.width = pct+"%";
+    $("#agentPct").textContent = pct+"%";
+    $("#agentStage").textContent = msg;
+    await new Promise(r=>setTimeout(r, 550 + Math.random()*350));
+  }
+  try { await api("/run-agent",{method:"POST"}); } catch {}
+  setTimeout(()=>hide($("#agentBar")), 600);
+}
+
+/* -----------------------------------------------------------
+ * Renderers
+ * -----------------------------------------------------------*/
+function render(data){
+  $("#kpiItems").textContent = fmt(data.kpi.items);
+  $("#kpiTopics").textContent = data.kpi.topics;
+  $("#kpiEarly").textContent = data.kpi.early;
+  $("#kpiSat").textContent = data.kpi.saturating;
+  $("#updatedAt").textContent = "Updated " + new Date().toLocaleString("en-IN");
+
+  // Trends
+  $("#trendsGrid").innerHTML = data.trends.map((t,i)=>`
+    <div class="card p-5">
+      <div class="flex items-center justify-between">
+        <span class="chip">#${i+1} · TVS ${t.tvs}</span>
+        <span class="text-xs text-neutral-500">${fmt(t.views)} views</span>
+      </div>
+      <div class="font-display font-semibold mt-3">${t.name}</div>
+      <div class="text-sm text-neutral-400 mt-1">${t.why}</div>
+      <div class="progress mt-3"><span style="width:${t.tvs}%"></span></div>
+      <div class="flex flex-wrap gap-2 mt-3">${t.platforms.map(p=>`<span class="chip">${p}</span>`).join("")}</div>
+      <div class="text-xs text-neutral-500 mt-3">Sample creators: ${t.creators.join(", ")}</div>
+    </div>
+  `).join("");
+
+  // Early signals
+  $("#earlyList").innerHTML = data.early.map(s=>`
+    <div class="card p-5">
+      <div class="flex items-center justify-between">
+        <span class="font-display font-semibold">${s.name}</span>
+        ${s.breakout?'<span class="chip" style="border-color:#00e5a8;color:#9bf3d8">BREAKOUT</span>':'<span class="chip">EARLY</span>'}
+      </div>
+      <div class="grid grid-cols-3 gap-3 mt-3 text-sm">
+        <div><div class="text-xs text-neutral-500">z-score</div><div class="font-semibold">${s.z}</div></div>
+        <div><div class="text-xs text-neutral-500">creators ↑</div><div class="font-semibold">${s.creator_growth}x</div></div>
+        <div><div class="text-xs text-neutral-500">views</div><div class="font-semibold">${fmt(s.views)}</div></div>
+      </div>
+      <div class="mt-3 text-xs text-neutral-500">Trend probability (7–30d)</div>
+      <div class="progress mt-1"><span style="width:${Math.round(s.prob*100)}%"></span></div>
+    </div>
+  `).join("");
+
+  // Saturating
+  $("#satList").innerHTML = data.saturating.map(s=>`<span class="chip" style="border-color:#ff9933;color:#ffd1a0">📉 ${s}</span>`).join("");
+
+  // Ideas
+  $("#ideasList").innerHTML = data.ideas.map(idea=>`
+    <div class="card p-5">
+      <div class="font-display font-semibold">🎬 ${idea.title}</div>
+      <div class="mt-3 text-sm"><span class="text-neutral-500">Hook (0–3s):</span><div class="text-neutral-100 mt-1">"${idea.hook}"</div></div>
+      <div class="mt-3 text-sm"><span class="text-neutral-500">Script:</span><div class="text-neutral-300 mt-1">${idea.script}</div></div>
+      <div class="mt-3 text-sm"><span class="text-neutral-500">Format:</span><div class="text-neutral-300 mt-1">${idea.format}</div></div>
+      <div class="mt-3 flex flex-wrap gap-2">${idea.hashtags.map(h=>`<span class="chip">${h}</span>`).join("")}</div>
+      <div class="mt-3 text-xs text-neutral-500"><strong class="text-neutral-300">Why it'll work:</strong> ${idea.why}</div>
+      <div class="mt-4 flex gap-2">
+        <button class="btn btn-ghost copyIdea" data-title="${idea.title}">Copy script</button>
+        <button class="btn btn-neon">Save</button>
+      </div>
+    </div>
+  `).join("");
+
+  $$(".copyIdea").forEach(b=>b.addEventListener("click",async ()=>{
+    const idea = data.ideas.find(i=>i.title===b.dataset.title);
+    const text = `${idea.title}\n\nHook: ${idea.hook}\n\nScript:\n${idea.script}\n\nFormat: ${idea.format}\nHashtags: ${idea.hashtags.join(" ")}`;
+    try { await navigator.clipboard.writeText(text); toast("Copied to clipboard"); } catch { toast("Copy failed"); }
+  }));
+}
+
+/* -----------------------------------------------------------
+ * Auth (frontend mock — wire to /auth/login & /auth/signup later)
+ * -----------------------------------------------------------*/
+let authMode = "login";
+function openAuth(mode="login"){
+  authMode = mode;
+  $("#authTitle").textContent = mode==="login" ? "Sign in" : "Create account";
+  $("#authSubmitText").textContent = mode==="login" ? "Sign in" : "Create account";
+  $("#switchText").textContent = mode==="login" ? "No account?" : "Already have one?";
+  $("#authSwitch").textContent = mode==="login" ? "Sign up" : "Sign in";
+  $("#nameOpt").classList.toggle("hide", mode==="signup");
+  show($("#authModal"));
+}
+function closeAuth(){ hide($("#authModal")); }
+
+async function handleAuthSubmit(e){
+  e.preventDefault();
+  const email = $("#authEmail").value.trim();
+  const pass  = $("#authPass").value;
+  const name  = $("#authName").value.trim() || email.split("@")[0];
+  // Try real backend first; fall back to mock
+  try {
+    const path = authMode==="login" ? "/auth/login" : "/auth/signup";
+    const data = await api(path, { method:"POST", body: JSON.stringify({ email, password: pass, name }) });
+    store.set("tp_token", data.token); store.set("tp_user", JSON.stringify(data.user));
+  } catch {
+    const user = { id:"u_"+Math.random().toString(36).slice(2,8), email, name, plan:null, active:false };
+    store.set("tp_token","mock_"+Date.now()); store.set("tp_user", JSON.stringify(user));
+  }
+  closeAuth();
+  // If the user clicked from a pricing button, send to checkout; otherwise go to dashboard
+  const pendingPlan = store.get("tp_pending_plan");
+  if(pendingPlan){ store.del("tp_pending_plan"); openPay(pendingPlan); }
+  else gotoDashboard();
+}
+
+function logout(){
+  store.del("tp_token"); store.del("tp_user");
+  hide($("#dashboard")); show($("#landing"));
+  $("#navLogin").classList.remove("hide"); $("#navSignup").classList.remove("hide");
+  $("#navDashboard").classList.add("hide");
+  toast("Signed out");
+}
+
+/* -----------------------------------------------------------
+ * Payment (frontend mock — wire to Stripe Checkout later)
+ * -----------------------------------------------------------*/
+let chosenPlan = "pro";
+function openPay(plan){
+  chosenPlan = plan;
+  $("#payPlan").textContent = PLANS[plan].name;
+  $("#payAmt").textContent  = PLANS[plan].price;
+  show($("#payModal"));
+}
+function closePay(){ hide($("#payModal")); }
+
+async function confirmPay(){
+  // In production: window.location = (await api("/billing/checkout",{method:"POST",body:JSON.stringify({plan:chosenPlan})})).url;
+  // For demo: mark user active locally
+  const user = JSON.parse(store.get("tp_user")||"{}");
+  user.plan = chosenPlan; user.active = true;
+  store.set("tp_user", JSON.stringify(user));
+  closePay();
+  toast("Subscription active. Welcome!");
+  gotoDashboard();
+}
+
+/* -----------------------------------------------------------
+ * Routing
+ * -----------------------------------------------------------*/
+async function gotoDashboard(){
+  const user = JSON.parse(store.get("tp_user")||"null");
+  if(!user){ openAuth("login"); return; }
+  hide($("#landing")); show($("#dashboard"));
+  $("#navLogin").classList.add("hide"); $("#navSignup").classList.add("hide");
+  $("#navDashboard").classList.remove("hide");
+  $("#hello").textContent = `Hi ${user.name} 👋`;
+  $("#planLine").textContent = user.active
+    ? `Plan: ${PLANS[user.plan]?.name||"Pro"} · Active`
+    : "Trial mode · upgrade anytime";
+  const data = await fetchAll();
+  render(data);
+}
+
+/* -----------------------------------------------------------
+ * Wire up
+ * -----------------------------------------------------------*/
+window.addEventListener("DOMContentLoaded", () => {
+  $("#yr").textContent = new Date().getFullYear();
+  $("#navLogin").addEventListener("click", ()=>openAuth("login"));
+  $("#navSignup").addEventListener("click", ()=>openAuth("signup"));
+  $("#navDashboard").addEventListener("click", gotoDashboard);
+  $("#authClose").addEventListener("click", closeAuth);
+  $("#authSwitch").addEventListener("click", ()=>openAuth(authMode==="login"?"signup":"login"));
+  $("#authForm").addEventListener("submit", handleAuthSubmit);
+  $("#payClose").addEventListener("click", closePay);
+  $("#payConfirm").addEventListener("click", confirmPay);
+  $("#logoutBtn").addEventListener("click", logout);
+
+  $$(".heroCta").forEach(b=>b.addEventListener("click", ()=>openAuth("signup")));
+  $$(".plan").forEach(b=>b.addEventListener("click", ()=>{
+    const plan = b.dataset.plan;
+    const user = JSON.parse(store.get("tp_user")||"null");
+    if(!user){ store.set("tp_pending_plan", plan); openAuth("signup"); }
+    else openPay(plan);
+  }));
+
+  $("#refreshBtn").addEventListener("click", async ()=>{
+    $("#refreshBtn").disabled = true;
+    const old = $("#refreshLabel").textContent;
+    $("#refreshLabel").textContent = "Running agent…";
+    await runAgent();
+    const data = await fetchAll();
+    render(data);
+    $("#refreshLabel").textContent = old;
+    $("#refreshBtn").disabled = false;
+    toast("Trends refreshed");
+  });
+
+  $("#niche").addEventListener("change", async (e)=>{
+    // Hook for /trends?niche=...; mock just re-renders
+    const data = await fetchAll();
+    render(data);
+  });
+
+  // If user is already signed in, jump to dashboard
+  if(store.get("tp_token")) gotoDashboard();
+});
+</script>
+</body>
+</html>
